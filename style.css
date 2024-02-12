@@ -19,8 +19,28 @@ body {
   justify-content: center;
 }
 
-.field-showroom > img {
-  width: 30%;
+.field{
+    margin: 0px 5rem;
+    position: relative;
+}
+
+.field > img {
+  width: 100%;
   height: 100%;
-  margin: 0px 5rem;
+}
+
+.players{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+}
+
+.defence{
+    position: absolute;
+    width: 100%;
+    height: 30%;
+    bottom: 0px;
+    height: 10rem;
+    background-color: rgba(255, 0, 0, 0.447);
 }
