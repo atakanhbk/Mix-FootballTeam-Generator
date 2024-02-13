@@ -64,16 +64,13 @@ body {
   margin: 1rem 0px;
 }
 
-
 .input-field {
   margin: 1rem 0px;
 }
-.input-field > textarea{
+.input-field > textarea {
   width: 400px;
   height: 200px;
 }
-
-
 
 .teams {
   width: 100%;
@@ -96,7 +93,7 @@ h3 {
   box-sizing: border-box;
 }
 
-.team-members {
+.first-team-members,.second-team-members {
   display: flex;
   flex-wrap: wrap;
   box-sizing: border-box;
@@ -105,10 +102,9 @@ h3 {
   margin-top: 1rem;
 }
 
-.team-members > h3 {
+.first-team-members > h3,.second-team-members > h3 {
   border: 1px solid black;
   border-radius: 15px;
   text-align: center;
   padding: 1rem;
 }
-

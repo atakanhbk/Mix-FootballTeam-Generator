@@ -1,5 +1,10 @@
 const generateBtn = document.getElementsByClassName("generateBtn")[0];
 const nameTextArea = document.getElementsByClassName("names")[0];
+const firstTeamMembers =
+  document.getElementsByClassName("first-team-members")[0];
+const secondTeamMembers = document.getElementsByClassName(
+  "second-team-members"
+)[0];
 
 const seperateNamesToList = () => {
   const namesList = nameTextArea.value.split(",");
@@ -7,22 +12,27 @@ const seperateNamesToList = () => {
 };
 
 const createTeams = (namesList) => {
-  const firstTeam = [];
-  const secondTeam = [];
   const namesListLength = namesList.length;
 
   for (let i = 0; i < namesListLength; i++) {
     const randomNumber = Math.floor(Math.random() * namesList.length);
     const selectedName = namesList.splice(randomNumber, 1)[0]; // Rastgele seçilen ismi listeden kaldır
     if (i % 2 === 0) {
-      firstTeam.push(selectedName);
+      createTeamMemberNames(1, selectedName);
     } else {
-      secondTeam.push(selectedName);
+      createTeamMemberNames(2, selectedName);
     }
   }
+};
 
-  console.log("First Team:", firstTeam);
-  console.log("Second Team:", secondTeam);
+const createTeamMemberNames = (whichTeam, selectedName) => {
+  const teamMemberName = document.createElement("h3");
+  teamMemberName.textContent = `${selectedName}`;
+  if (whichTeam === 1) {
+    firstTeamMembers.appendChild(teamMemberName);
+  } else {
+    secondTeamMembers.appendChild(teamMemberName);
+  }
 };
 
 // Button Click Event Listener
