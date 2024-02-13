@@ -52,6 +52,7 @@ body {
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
+  gap: 1.5rem;
 }
 .team-generator {
   width: 90%;
@@ -67,4 +68,8 @@ body {
 .teams {
   width: 100%;
   height: 300px;
+}
+
+h1,h2,h3{
+  margin: 0px;
 }
