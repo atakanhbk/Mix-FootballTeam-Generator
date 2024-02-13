@@ -1,7 +1,7 @@
 const generateBtn = document.getElementsByClassName("generateBtn")[0];
 const nameTextArea = document.getElementsByClassName("names")[0];
 
-const clickedGenerateBtn = () => {
+const seperateNamesToList = () => {
   const namesList = nameTextArea.value.split(",");
   createTeams(namesList);
 };
@@ -24,4 +24,6 @@ const createTeams = (namesList) => {
   console.log("First Team:", firstTeam);
   console.log("Second Team:", secondTeam);
 };
-generateBtn.addEventListener("click", clickedGenerateBtn);
+
+// Button Click Event Listener
+generateBtn.addEventListener("click", seperateNamesToList);
