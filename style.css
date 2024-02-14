@@ -65,11 +65,18 @@ body {
 }
 
 .input-field {
+  margin: 1rem 1.5rem;
+}
+
+.input-field > h3 {
+  display: inline-block;
   margin: 1rem 0px;
 }
-.input-field > textarea {
-  width: 400px;
-  height: 200px;
+
+.player-names {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
 }
 
 .teams {
@@ -93,7 +100,8 @@ h3 {
   box-sizing: border-box;
 }
 
-.first-team-members,.second-team-members {
+.first-team-members,
+.second-team-members {
   display: flex;
   flex-wrap: wrap;
   box-sizing: border-box;
@@ -102,7 +110,8 @@ h3 {
   margin-top: 1rem;
 }
 
-.first-team-members > h3,.second-team-members > h3 {
+.first-team-members > h3,
+.second-team-members > h3 {
   border: 1px solid black;
   border-radius: 15px;
   text-align: center;
