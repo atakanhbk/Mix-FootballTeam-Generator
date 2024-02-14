@@ -6,8 +6,10 @@ const firstTeamMembers =
 const secondTeamMembers = document.getElementsByClassName(
   "second-team-members"
 )[0];
+let playersObject = [];
 
 const selectOptionFunction = () => {
+  let players = []; // Array to store player objects
   playerNames.innerHTML = "";
   const playerNumberInt = parseInt(playerNumber.value);
   for (let i = 0; i < playerNumberInt; i++) {
@@ -18,25 +20,28 @@ const selectOptionFunction = () => {
     <br>
     <span>Player Value = </span>
     <select class="playerValue" name="playerValue">
-      <option value="option1">5</option>
-      <option value="option2">6</option>
-      <option value="option3">7</option>
-      <option value="option4">8</option>
-      <option value="option5">9</option>
-      <option value="option5">10</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10">10</option>
     </select>
   </div>
     `;
-
+  
     playerNames.innerHTML += playerInputPartDiv;
   }
+
+  
 };
 
 // Button Click Event Listener
 
 const generateTeam = () => {
-  const playerName = document.querySelectorAll(".player-name");
 
+  const playerName = document.querySelectorAll(".player-name");
+  createPlayerObject();
   const playerNamesList = [];
   for (let i = 0; i < playerName.length; i++) {
     playerNamesList.push(playerName[i].value);
@@ -44,6 +49,23 @@ const generateTeam = () => {
 
   createTeams(playerNamesList);
 };
+
+const createPlayerObject = (teamNumber) => {
+  const playerName = document.querySelectorAll(".player-name");
+  const playerValue = document.querySelectorAll(".playerValue");
+  
+  for (let i = 0; i < playerValue.length; i++) {
+    const player = {
+      name : playerName[i].value,
+      value : playerValue[i].value,
+      teamNumber : teamNumber
+    }
+    playersObject.push(player);
+  }
+
+  console.log(playersObject);
+
+}
 
 const createTeams = (namesList) => {
   const goalKeepers = document.querySelectorAll(".goal-keeper-name");
