@@ -1,6 +1,11 @@
 const playerNumber = document.getElementsByClassName("playerNumber")[0];
 const playerNames = document.getElementsByClassName("player-names")[0];
 const generateBtn = document.getElementsByClassName("generateBtn")[0];
+const firstTeamMembers =
+  document.getElementsByClassName("first-team-members")[0];
+const secondTeamMembers = document.getElementsByClassName(
+  "second-team-members"
+)[0];
 
 const selectOptionFunction = () => {
   playerNames.innerHTML = "";
@@ -31,19 +36,19 @@ const selectOptionFunction = () => {
 
 const generateTeam = () => {
   const playerName = document.querySelectorAll(".player-name");
+
   const playerNamesList = [];
   for (let i = 0; i < playerName.length; i++) {
     playerNamesList.push(playerName[i].value);
   }
 
   createTeams(playerNamesList);
-
 };
 
-
-
 const createTeams = (namesList) => {
- 
+  const goalKeepers = document.querySelectorAll(".goal-keeper-name");
+  firstTeamMembers.innerHTML = "";
+  secondTeamMembers.innerHTML = "";
   const firstTeam = [];
   const secondTeam = [];
   const namesListLength = namesList.length;
@@ -59,13 +64,38 @@ const createTeams = (namesList) => {
       }
     }
   }
+  const randomNumberForGoalKeepers = Math.floor(Math.random()*2);
+  console.log(goalKeepers[0]);
+  
+
+  if (randomNumberForGoalKeepers == 1) {
+    firstTeam.push(goalKeepers[randomNumberForGoalKeepers].value);
+    secondTeam.push(goalKeepers[randomNumberForGoalKeepers - 1].value);
+  }
+  else{
+    firstTeam.push(goalKeepers[randomNumberForGoalKeepers].value);
+    secondTeam.push(goalKeepers[randomNumberForGoalKeepers + 1].value);
+  }
 
   console.log("First Team:", firstTeam);
   console.log("Second Team:", secondTeam);
 
-
+  createTeamMemberNames(firstTeam, secondTeam);
 };
 
+const createTeamMemberNames = (firstTeam, secondTeam) => {
+  for (let i = 0; i < firstTeam.length; i++) {
+    const teamMemberName = document.createElement("h3");
+    teamMemberName.textContent = `${firstTeam[i]}`;
+    firstTeamMembers.appendChild(teamMemberName);
+  }
+
+  for (let i = 0; i < secondTeam.length; i++) {
+    const teamMemberName = document.createElement("h3");
+    teamMemberName.textContent = `${secondTeam[i]}`;
+    secondTeamMembers.appendChild(teamMemberName);
+  }
+};
 
 playerNumber.addEventListener("change", selectOptionFunction);
 generateBtn.addEventListener("click", generateTeam);
