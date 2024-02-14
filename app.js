@@ -1,6 +1,11 @@
 const playerNumber = document.getElementsByClassName("playerNumber")[0];
 const playerNames = document.getElementsByClassName("player-names")[0];
 const generateBtn = document.getElementsByClassName("generateBtn")[0];
+const firstTeamMembers =
+  document.getElementsByClassName("first-team-members")[0];
+const secondTeamMembers = document.getElementsByClassName(
+  "second-team-members"
+)[0];
 
 const selectOptionFunction = () => {
   playerNames.innerHTML = "";
@@ -31,14 +36,52 @@ const generateTeam = () => {
   const playerNames = document.querySelectorAll(".player-name");
   const playerValues = document.querySelectorAll(".player-value");
   let playersObject = [];
-  const randomTeamSelector = Math.floor(Math.random()*2);
-  console.log(randomTeamSelector);
+
+  let firstTeam = [];
+  let secondTeam = [];
   for (let i = 0; i < playerNames.length; i++) {
+    const randomTeamSelector = Math.floor(Math.random() * 2);
+
     const player = {
       name: playerNames[i].value,
       value: playerValues[i].value,
     };
     playersObject.push(player);
+
+    if (randomTeamSelector === 0) {
+      if (firstTeam.length <= secondTeam.length) {
+        firstTeam.push(player);
+      } else {
+        secondTeam.push(player);
+      }
+    } else {
+      if (secondTeam.length <= firstTeam.length) {
+        secondTeam.push(player);
+      } else {
+        firstTeam.push(player);
+      }
+    }
+  }
+
+  console.log("First Team = " + firstTeam);
+  console.log("Second Team = " + secondTeam);
+
+  addPlayersToTheTeams(firstTeam, secondTeam);
+};
+
+const addPlayersToTheTeams = (firstTeam, secondTeam) => {
+  firstTeamMembers.innerHTML = "";
+  secondTeamMembers.innerHTML = "";
+  for (let i = 0; i < firstTeam.length; i++) {
+    const teamMemberName = document.createElement("h3");
+    teamMemberName.textContent = `${firstTeam[i].name}`;
+    firstTeamMembers.appendChild(teamMemberName);
+  }
+
+  for (let i = 0; i < secondTeam.length; i++) {
+    const teamMemberName = document.createElement("h3");
+    teamMemberName.textContent = `${secondTeam[i].name}`;
+    secondTeamMembers.appendChild(teamMemberName);
   }
 };
 
