@@ -84,18 +84,29 @@ const addPlayersToTheTeams = (firstTeam, secondTeam) => {
     secondTeamMembers.appendChild(teamMemberName);
   }
 
-  getValueAvarageOfTeams(firstTeam);
+  getValueAvarageOfTeams(firstTeam, secondTeam);
 };
 
-const getValueAvarageOfTeams = (firstTeam) => {
+const getValueAvarageOfTeams = (firstTeam, secondTeam) => {
   let firstTeamValuePoint = 0;
+  let secondTeamValuePoint = 0;
+  let firstTeamAverage = 0;
+  let secondTeamAverage = 0;
 
   firstTeam.forEach((element) => {
     const valueINT = parseInt(element.value);
     firstTeamValuePoint += valueINT;
   });
 
-  console.log(firstTeamValuePoint / firstTeam.length);
+  secondTeam.forEach((element) => {
+    const valueINT = parseInt(element.value);
+    secondTeamValuePoint += valueINT;
+  });
+
+  firstTeamAverage = firstTeamValuePoint / firstTeam.length;
+  secondTeamAverage = secondTeamValuePoint / secondTeam.length;
+  console.log("First Team Average = " + firstTeamAverage);
+  console.log("Second Team Average = " + secondTeamAverage);
 };
 
 playerNumber.addEventListener("change", selectOptionFunction);
