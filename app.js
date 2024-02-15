@@ -105,12 +105,10 @@ const getValueAvarageOfTeams = (firstTeam, secondTeam) => {
 
   firstTeamAverage = firstTeamValuePoint / firstTeam.length;
   secondTeamAverage = secondTeamValuePoint / secondTeam.length;
-  console.log("First Team Average = " + firstTeamAverage);
-  console.log("Second Team Average = " + secondTeamAverage);
 
   if (
-    firstTeamAverage > secondTeamAverage + 1.1 ||
-    firstTeamAverage < secondTeamAverage - 1.1
+    firstTeamAverage > secondTeamAverage + 0.5 ||
+    firstTeamAverage < secondTeamAverage - 0.5
   ) {
     generateTeam();
   }
@@ -118,3 +116,7 @@ const getValueAvarageOfTeams = (firstTeam, secondTeam) => {
 
 playerNumber.addEventListener("change", selectOptionFunction);
 generateBtn.addEventListener("click", generateTeam);
+
+window.addEventListener("load",() => {
+  selectOptionFunction();
+})
