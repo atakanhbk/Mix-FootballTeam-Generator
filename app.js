@@ -109,8 +109,8 @@ const getValueAvarageOfTeams = (firstTeam, secondTeam) => {
   console.log("Second Team Average = " + secondTeamAverage);
 
   if (
-    firstTeamAverage > secondTeamAverage + 1.5 ||
-    firstTeamAverage < secondTeamAverage - 1.5
+    firstTeamAverage > secondTeamAverage + 1.1 ||
+    firstTeamAverage < secondTeamAverage - 1.1
   ) {
     generateTeam();
   }
