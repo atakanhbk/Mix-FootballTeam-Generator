@@ -107,6 +107,13 @@ const getValueAvarageOfTeams = (firstTeam, secondTeam) => {
   secondTeamAverage = secondTeamValuePoint / secondTeam.length;
   console.log("First Team Average = " + firstTeamAverage);
   console.log("Second Team Average = " + secondTeamAverage);
+
+  if (
+    firstTeamAverage > secondTeamAverage + 1.5 ||
+    firstTeamAverage < secondTeamAverage - 1.5
+  ) {
+    generateTeam();
+  }
 };
 
 playerNumber.addEventListener("change", selectOptionFunction);
