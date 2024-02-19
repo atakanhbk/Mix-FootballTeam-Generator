@@ -105,6 +105,26 @@ const getValueAvarageOfTeams = (firstTeam, secondTeam) => {
 
   firstTeamAverage = firstTeamValuePoint / firstTeam.length;
   secondTeamAverage = secondTeamValuePoint / secondTeam.length;
+  const firstTeamField = firstTeamMembers.parentNode;
+  const secondTeamField = secondTeamMembers.parentNode;
+
+  const teamsValue = document.querySelectorAll(".team-average-point");
+  
+  teamsValue.forEach(element => {
+    element.remove();
+  })
+
+
+  const resultFirstTeam = document.createElement("p");
+  resultFirstTeam.className = "team-average-point"
+  resultFirstTeam.textContent = `Team 1 Average Point = ${Math.round(firstTeamAverage)}`;
+  firstTeamField.appendChild(resultFirstTeam);
+
+  const resultSecondTeam = document.createElement("p");
+  resultSecondTeam.className = "team-average-point"
+  resultSecondTeam.textContent = `Team 2 Average Point = ${Math.round(secondTeamAverage)}`;
+  secondTeamField.appendChild(resultSecondTeam);
+
 
   if (
     firstTeamAverage > secondTeamAverage + 0.5 ||
