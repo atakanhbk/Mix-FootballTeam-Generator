@@ -14,7 +14,7 @@ const selectOptionFunction = () => {
     const playerInputPartDiv = `
     <div class="player">
     <h3>Player Name </h3>
-    <input class="player-name">
+    <input class="player-name" required>
     <br>
     <span>Player Value = </span>
     <select class="player-value" name="playerValue">
