@@ -6,6 +6,7 @@ const firstTeamMembers =
 const secondTeamMembers = document.getElementsByClassName(
   "second-team-members"
 )[0];
+const inputForm = document.getElementsByClassName("input-form")[0];
 
 const selectOptionFunction = () => {
   playerNames.innerHTML = "";
@@ -32,7 +33,8 @@ const selectOptionFunction = () => {
   }
 };
 
-const generateTeam = () => {
+const generateTeam = (e) => {
+ 
   const playerNames = document.querySelectorAll(".player-name");
   const playerValues = document.querySelectorAll(".player-value");
   let playersObject = [];
@@ -62,6 +64,7 @@ const generateTeam = () => {
       }
     }
   }
+  e.preventDefault();
 
   console.log("First Team = " + firstTeam);
   console.log("Second Team = " + secondTeam);
@@ -70,6 +73,7 @@ const generateTeam = () => {
 };
 
 const addPlayersToTheTeams = (firstTeam, secondTeam) => {
+
   firstTeamMembers.innerHTML = "";
   secondTeamMembers.innerHTML = "";
   for (let i = 0; i < firstTeam.length; i++) {
@@ -109,22 +113,24 @@ const getValueAvarageOfTeams = (firstTeam, secondTeam) => {
   const secondTeamField = secondTeamMembers.parentNode;
 
   const teamsValue = document.querySelectorAll(".team-average-point");
-  
-  teamsValue.forEach(element => {
-    element.remove();
-  })
 
+  teamsValue.forEach((element) => {
+    element.remove();
+  });
 
   const resultFirstTeam = document.createElement("p");
-  resultFirstTeam.className = "team-average-point"
-  resultFirstTeam.textContent = `Team 1 Average Point = ${Math.round(firstTeamAverage)}`;
+  resultFirstTeam.className = "team-average-point";
+  resultFirstTeam.textContent = `Team 1 Average Point = ${Math.round(
+    firstTeamAverage
+  )}`;
   firstTeamField.appendChild(resultFirstTeam);
 
   const resultSecondTeam = document.createElement("p");
-  resultSecondTeam.className = "team-average-point"
-  resultSecondTeam.textContent = `Team 2 Average Point = ${Math.round(secondTeamAverage)}`;
+  resultSecondTeam.className = "team-average-point";
+  resultSecondTeam.textContent = `Team 2 Average Point = ${Math.round(
+    secondTeamAverage
+  )}`;
   secondTeamField.appendChild(resultSecondTeam);
-
 
   if (
     firstTeamAverage > secondTeamAverage + 0.5 ||
@@ -135,8 +141,8 @@ const getValueAvarageOfTeams = (firstTeam, secondTeam) => {
 };
 
 playerNumber.addEventListener("change", selectOptionFunction);
-generateBtn.addEventListener("click", generateTeam);
+inputForm.addEventListener("submit", generateTeam);
 
-window.addEventListener("load",() => {
+window.addEventListener("load", () => {
   selectOptionFunction();
-})
+});
