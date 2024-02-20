@@ -1,2 +1,2 @@
-<h2>Video</h2>
+<h1>Video</h1>
  
